@@ -44,6 +44,8 @@
 
 #include "allocore/system/al_Config.h"
 
+#include <iostream>
+
 namespace al{
 
 struct RGB;
@@ -164,6 +166,8 @@ struct Color{
 	Color operator- (float v) const { return Color(*this)-=v; }
 	Color operator* (float v) const { return Color(*this)*=v; }
 	Color operator/ (float v) const { return Color(*this)/=v; }
+
+	friend std::ostream& operator<< (std::ostream& out, Color& v){ out << "(" << v.r << ", " << v.g << ", " << v.b << ", " << v.a << ")" << std::endl; return out; }
 
 	/// Clamp all components into [0,1] range
 	Color& clamp(){
